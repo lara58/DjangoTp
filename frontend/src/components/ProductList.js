@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -32,6 +33,19 @@ const ProductList = () => {
         console.error('Erreur:', error);
         setError('Impossible de charger les produits.');
         setLoading(false);
+      });
+  };
+
+  const deleteProduct = (id) => {
+    axios
+      .delete(`http://127.0.0.1:8000/api/products/${id}/delete/`)
+      .then(() => {
+        // Mettre à jour l'état pour enlever le produit supprimé
+        setProducts(products.filter((product) => product.id !== id));
+      })
+      .catch((error) => {
+        console.error('Erreur:', error);
+        setError('Impossible de supprimer le produit.');
       });
   };
 
@@ -137,6 +151,24 @@ const ProductList = () => {
         </button>
       </div>
 
+      {/* Bouton Ajouter un produit */}
+      <Link to="/add-product">
+        <button
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#39ff14',
+            color: 'black',
+            border: 'none',
+            fontSize: '16px',
+            cursor: 'pointer',
+            borderRadius: '5px',
+            marginTop: '20px',
+          }}
+        >
+          Ajouter un produit
+        </button>
+      </Link>
+
       {/* Liste des produits */}
       {products.length === 0 ? (
         <p>Aucun produit disponible.</p>
@@ -181,6 +213,22 @@ const ProductList = () => {
               >
                 Voir les détails
               </Link>
+              {/* Bouton de suppression */}
+              <button
+                onClick={() => deleteProduct(product.id)}
+                style={{
+                  backgroundColor: '#ff4136',
+                  color: 'white',
+                  border: 'none',
+                  padding: '10px 20px',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+                  borderRadius: '5px',
+                  marginTop: '10px',
+                }}
+              >
+                Supprimer
+              </button>
             </div>
           ))}
         </div>
@@ -208,4 +256,3 @@ const ProductList = () => {
 };
 
 export default ProductList;
-

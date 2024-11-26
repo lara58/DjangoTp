@@ -47,6 +47,14 @@ const ProductDetails = () => {
       >
         Retour au catalogue
       </button>
+
+      {/* Bouton de mise à jour */}
+      <button
+        onClick={() => navigate(`/product/${product.id}/update`)}
+        style={styles.updateButton}
+      >
+        Mettre à jour
+      </button>
     </div>
   );
 };
@@ -54,8 +62,8 @@ const ProductDetails = () => {
 const styles = {
   container: {
     padding: '30px',
-    backgroundColor: '#0a0a0a',  // Fond noir pour tout le conteneur
-    color: '#39ff14',  // Texte en vert
+    backgroundColor: '#0a0a0a',
+    color: '#39ff14',
     textAlign: 'center',
     fontFamily: '"Arial", sans-serif',
     borderRadius: '10px',
@@ -66,7 +74,7 @@ const styles = {
   title: {
     color: '#ffff00',
     fontSize: '2.5rem',
-    textShadow: '0 0 10px #ffff00',  // Ombre jaune
+    textShadow: '0 0 10px #ffff00',
     marginBottom: '20px',
   },
   image: {
@@ -74,7 +82,7 @@ const styles = {
     maxWidth: '500px',
     marginBottom: '20px',
     borderRadius: '10px',
-    boxShadow: '0 4px 6px rgba(0, 255, 0, 0.5)',  // Ombre verte sur l'image
+    boxShadow: '0 4px 6px rgba(0, 255, 0, 0.5)',
     objectFit: 'cover',
   },
   description: {
@@ -94,7 +102,7 @@ const styles = {
     marginBottom: '30px',
   },
   backButton: {
-    backgroundColor: '#a020f0',  // Violet pour le bouton de retour
+    backgroundColor: '#a020f0',
     color: 'white',
     border: 'none',
     padding: '15px 30px',
@@ -102,7 +110,19 @@ const styles = {
     cursor: 'pointer',
     borderRadius: '10px',
     transition: 'background-color 0.3s, transform 0.3s',
-    boxShadow: '0 4px 6px rgba(160, 32, 240, 0.6)',  // Ombre violette
+    boxShadow: '0 4px 6px rgba(160, 32, 240, 0.6)',
+  },
+  updateButton: {
+    backgroundColor: '#ff8500',  // Couleur orange pour le bouton de mise à jour
+    color: 'white',
+    border: 'none',
+    padding: '15px 30px',
+    fontSize: '18px',
+    cursor: 'pointer',
+    borderRadius: '10px',
+    transition: 'background-color 0.3s',
+    boxShadow: '0 4px 6px rgba(255, 133, 0, 0.6)',
+    marginTop: '20px',
   },
 };
 
